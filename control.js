@@ -3,6 +3,8 @@
 var more = document.getElementById("more");
 var start = document.getElementById("start");
 var start = document.getElementById("try-again");
+var dealersam = document.getElementById("dealer-button");
+
 var score = document.querySelector(".score-status")
 var over = document.querySelector(".over")
 
@@ -16,7 +18,7 @@ const card_colors = ["hearts", "diamonds", "clubs", "spades"];
 var currentsession = []
 let sum = 0
 
-
+let dealer_sum = 0
 
 var cardLayout = document.createElement("div");
 cardLayout.className = "card starter";
@@ -30,6 +32,19 @@ for (var i = 0; i < 2; i++) {
     clonedCard.id = randomId;
     clonedCard.classList.add("" + random_color + "-" + randomId);
     yourSide.appendChild(clonedCard);
+    sum += randomId;
+    sum_checker();
+}
+
+var dealerSide = document.querySelector(".dealer-side");
+
+for (var i = 0; i < 2; i++) {
+    var clonedCard = cardLayout.cloneNode(true);
+    var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+    var randomId = generateRandomId(random_color);
+    clonedCard.id = randomId;
+    clonedCard.classList.add("" + random_color + "-" + randomId);
+    dealerSide.appendChild(clonedCard);
     sum += randomId;
     sum_checker();
 }
@@ -85,19 +100,48 @@ function addCard() {
 function sum_checker() {
     score.textContent = sum;
     // console.log(sum)
-    if (sum === 21) console.log("GG")
+    if(sum < 21 && dealer_sum < 21) {
+        if((21-sum) > (21-dealer_sum)) console.log("GG")
+    }
     else if (sum > 21) {
         gameover()
         over.style.display = "flex";
     }
+
 }
+
+function dealer_turn(){
+    var dealer_goal
+    dealer_goal = available_numbers[Math.floor(Math.random() * available_numbers.length)];
+    console.log(dealer_goal)
+    console.log("dealer sum: ", dealer_sum)
+    current_dealer_cards = 2
+    while(current_dealer_cards < dealer_goal && dealer_sum < 21) {
+        var clonedCard = cardLayout.cloneNode(true);
+        var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+        console.log(random_color)
+        var randomId = generateRandomId(random_color); // Pass random_color to generateRandomId()
+        clonedCard.id = randomId;
+        clonedCard.classList.add("" + random_color + "-" + randomId);
+        dealerSide.appendChild(clonedCard);
+        dealer_sum += randomId;
+        // sum_checker();
+        current_dealer_cards++;
+    }
+
+}
+
 
 function gameover() {
     while (yourSide.firstChild) {
         yourSide.removeChild(yourSide.firstChild);
     }
+    while (dealerSide.firstChild) {
+        dealerSide.removeChild(dealerSide.firstChild);
+    }
     setTimeout(function() {
         sum = 0
+        dealer_sum = 0
         score.textContent = sum;
         for (var i = 0; i < 2; i++) {
             var clonedCard = cardLayout.cloneNode(true);
@@ -110,7 +154,17 @@ function gameover() {
             sum += randomId;
             sum_checker();
             over.style.display = "none";
-
+        }
+        for (var i = 0; i < 2; i++) {
+            var clonedCard = cardLayout.cloneNode(true);
+            var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+            var randomId = generateRandomId(random_color);
+            clonedCard.id = randomId;
+            clonedCard.classList.add("" + random_color + "-" + randomId);
+            available_numbers.splice(available_numbers.indexOf(randomId), 1);
+            dealerSide.appendChild(clonedCard);
+            dealer_sum += randomId;
+            sum_checker();
         }
     }, 1500); // 3000 milliseconds = 3 seconds
 }
@@ -118,3 +172,4 @@ function gameover() {
 
 more.addEventListener("click", addCard);
 start.addEventListener("click", gameover)
+dealersam.addEventListener("click", dealer_turn)
