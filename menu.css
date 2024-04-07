@@ -22,24 +22,23 @@ body {
 
 }
 
-.table {
+.table, .table-2 {
     width: 90%;
-    min-height: 600px;
+    min-height: 200px;
     background-color:rgb(116, 109, 122) ;
     display: flex;
-    flex-direction: column;
     justify-content: top;
     align-items: center;
-    padding-top: 20px;
-    margin-top: 20px;
 }
-
+.table {
+  flex-direction: column;
+}
 .your-side, .dealer-side {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
+    width: 50%;
 }
 
 .button {
@@ -73,7 +72,7 @@ body {
 }
 
 .actions, .actions-2 {
-  width: 48%;
+  width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

@@ -101,7 +101,10 @@ function sum_checker() {
     score.textContent = sum;
     // console.log(sum)
     if(sum < 21 && dealer_sum < 21) {
-        if((21-sum) > (21-dealer_sum)) console.log("GG")
+        if((21-sum) > (21-dealer_sum)) 
+        {
+            let idk = 0;
+        }
     }
     else if (sum > 21) {
         gameover()
@@ -111,8 +114,7 @@ function sum_checker() {
 }
 
 function dealer_turn(){
-    var dealer_goal
-    dealer_goal = available_numbers[Math.floor(Math.random() * available_numbers.length)];
+    var dealer_goal = available_numbers[Math.floor(Math.random() * available_numbers.length)];
     console.log(dealer_goal)
     console.log("dealer sum: ", dealer_sum)
     current_dealer_cards = 2

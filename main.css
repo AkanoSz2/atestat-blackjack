@@ -97,7 +97,7 @@ body {
 }
 
 .actions, .actions-2 {
-   width: 48%;
+   width: 70%;
    display: flex;
    flex-direction: row;
    justify-content: space-around;
