@@ -102,9 +102,9 @@ function gameover() {
         for (var i = 0; i < 2; i++) {
             var clonedCard = cardLayout.cloneNode(true);
             var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
-            clonedCard.classList.add("" + random_color);
             var randomId = generateRandomId(random_color);
             clonedCard.id = randomId;
+            clonedCard.classList.add("" + random_color + "-" + randomId);
             available_numbers.splice(available_numbers.indexOf(randomId), 1);
             yourSide.appendChild(clonedCard);
             sum += randomId;
