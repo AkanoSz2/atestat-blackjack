@@ -1,0 +1,328 @@
+/* Clubs */
+.clubs-2 {
+    background-image: url('poker/2_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-3 {
+    background-image: url('poker/3_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-4 {
+    background-image: url('poker/4_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-5 {
+    background-image: url('poker/5_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-6 {
+    background-image: url('poker/6_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-7 {
+    background-image: url('poker/7_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-8 {
+    background-image: url('poker/8_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-9 {
+    background-image: url('poker/9_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-10 {
+    background-image: url('poker/10_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-12 {
+    background-image: url('poker/jack_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-13 {
+    background-image: url('poker/queen_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-14 {
+    background-image: url('poker/king_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.clubs-11, .clubs-1{
+    background-image: url('poker/ace_of_clubs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Diamonds */
+.diamonds-2 {
+    background-image: url('poker/2_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-3 {
+    background-image: url('poker/3_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-4 {
+    background-image: url('poker/4_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-5 {
+    background-image: url('poker/5_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-6 {
+    background-image: url('poker/6_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-7 {
+    background-image: url('poker/7_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-8 {
+    background-image: url('poker/8_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-9 {
+    background-image: url('poker/9_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-10 {
+    background-image: url('poker/10_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-12 {
+    background-image: url('poker/jack_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-13 {
+    background-image: url('poker/queen_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-14 {
+    background-image: url('poker/king_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.diamonds-11, .diamonds-1 {
+    background-image: url('poker/ace_of_diamonds.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Hearts */
+.hearts-2 {
+    background-image: url('poker/2_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-3 {
+    background-image: url('poker/3_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-4 {
+    background-image: url('poker/4_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-5 {
+    background-image: url('poker/5_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-6 {
+    background-image: url('poker/6_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-7 {
+    background-image: url('poker/7_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-8 {
+    background-image: url('poker/8_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-9 {
+    background-image: url('poker/9_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-10 {
+    background-image: url('poker/10_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-12 {
+    background-image: url('poker/jack_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-13 {
+    background-image: url('poker/queen_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-14 {
+    background-image: url('poker/king_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hearts-11, .hearts-1 {
+    background-image: url('poker/ace_of_hearts.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Spades */
+.spades-2 {
+    background-image: url('poker/2_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-3 {
+    background-image: url('poker/3_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-4 {
+    background-image: url('poker/4_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-5 {
+    background-image: url('poker/5_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-6 {
+    background-image: url('poker/6_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-7 {
+    background-image: url('poker/7_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-8 {
+    background-image: url('poker/8_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-9 {
+    background-image: url('poker/9_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-10 {
+    background-image: url('poker/10_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-12 {
+    background-image: url('poker/jack_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-13 {
+    background-image: url('poker/queen_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-14 {
+    background-image: url('poker/king_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.spades-11, .spades-1 {
+    background-image: url('poker/ace_of_spades.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Jokers */
+.black-joker {
+    background-image: url('poker/black_joker.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.red-joker {
+    background-image: url('poker/red_joker.png');
+    background-size: cover;
+    background-position: center;
+}
