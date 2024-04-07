@@ -1,0 +1,193 @@
+body {
+   /* background-image: url(/green-felt-background-texture-poker-casino-table_434420-1498.png); */
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   height: 100vh;
+   background-color: #101a27;
+   overflow: hidden;
+   margin:0;
+   user-select: none; 
+
+}
+
+.home {
+   width:100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.container {
+   width: 100%;
+   z-index: 99;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+
+}
+
+
+.title,
+.content  {
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   color: #fff;
+
+}
+.status {
+   color:#fff;
+   width:100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-top: 40px;;
+}
+
+.record {
+   font-size: 2.5rem;
+   margin:0;
+   font-style: italic;
+}
+
+.score {
+   font-size: 2.3rem;
+   margin:0.3em;
+}
+
+.title {
+   font-size: 6em;
+}
+
+.button {
+   padding: 15px;
+}
+
+.button {
+   --color1: #644dff;
+   --color2: #4836bb;
+   --color-3: #654dff63;
+   cursor: pointer;
+   width: 184px;
+   height: 48px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+   font-size: 1.125em;
+   font-weight: 800;
+   letter-spacing: 2px;
+   color: #fff;
+   background: var(--color1);
+   border: 2px solid var(--color2);
+   border-radius: .75rem;
+   box-shadow: 0 8px 0 var(--color2);
+   transform: skew(-10deg);
+   transition: all .1s ease;
+   filter: drop-shadow(0 15px 20px var(--color-3));
+}
+
+.button:active {
+   letter-spacing: 0px;
+   transform: skew(-10deg) translateY(8px);
+   box-shadow: 0 0 0 var(--color-3);
+}
+
+.actions, .actions-2 {
+   width: 48%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+}
+.actions > h1 {
+   margin: 1em;
+   text-align: center;
+}
+.actions-2 > h1 {
+   margin: 0;
+   text-align: center;
+
+}
+
+.token {
+   max-width: 100%;
+   display: flex;
+   flex-direction: row;
+   /* justify-content: space-evenly; */
+   height: 0px;
+   margin-top: -20px;
+}
+
+.chip,
+.chip2,
+.chip3 {
+   display: flex;
+   width: 150px;
+   height: 150px;
+
+}
+.chip {
+   background-image: url(chip.png);
+   background-position: center;
+   background-size: cover;
+}
+.chip2 {
+   background-image: url(greenchip.png);
+   background-position: center;
+   background-size: cover;
+}
+.chip3 {
+   background-image: url(bluechip.png);
+   background-position: center;
+   background-size: cover;
+}
+@keyframes falling1 {
+   0% {
+       transform: translateY(-100%) rotate(0deg);
+       opacity: 1;
+   }
+
+   100% {
+       transform: translateY(420%) rotate(360deg);
+       opacity: 0;
+   }
+}
+
+@keyframes falling2 {
+   0% {
+       transform: translateY(-200%) rotate(0deg);
+       opacity: 1;
+   }
+
+   100% {
+       transform: translateY(420%) rotate(360deg);
+       opacity: 0;
+   }
+}
+
+@keyframes falling3 {
+   0% {
+       transform: translateY(-200%) rotate(0deg);
+       opacity: 1;
+   }
+
+   100% {
+       transform: translateY(420%) rotate(360deg);
+       opacity: 0;
+   }
+}
+
+.chip {
+   animation: falling1 1.5s ease-out infinite;
+}
+
+.chip2 {
+   animation: falling2 1.5s ease-in infinite;
+}
+
+.chip3 {
+   animation: falling3 1.5s ease-in infinite;
+}
