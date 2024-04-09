@@ -116,28 +116,28 @@ function shuffle(){
         }
         sum_checker();
     }
-    
-    // for (var i = 0; i < 2; i++) {
-    //     var DealerClone = cardLayout.cloneNode(true);
-    //     var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
-    //     var randomId = generateRandomId(random_color);
-    //     DealerClone.id = randomId;
-    //     DealerClone.classList.add("" + random_color + "-" + randomId);
-    //     dealerSide.appendChild(DealerClone);
-    //     if (randomId > 11) {
-    //             dealer_sum += 10;
-    //     } else if (dealer_sum == 0 && (randomId == 1 || randomId == 11)) {
-    //             dealer_sum += 11;
-    //     } else if (dealer_sum <= 10 && (randomId == 1 || randomId == 11)) {
-    //             dealer_sum += 11;
-    //     } else if (dealer_sum > 11 && (randomId == 1 || randomId == 11)) {
-    //             dealer_sum += 1;
-    //     } else {
-    //             dealer_sum += randomId;
-    //     }
-    //     dealer_checker();
-    // }
-}
+    for (var i = 0; i < 2; i++) {
+        var DealerClone = cardLayout.cloneNode(true);
+        var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+        var randomId = generateRandomId(random_color);
+        DealerClone.id = randomId;
+        DealerClone.classList.add("" + random_color + "-" + randomId);
+        dealerSide.appendChild(DealerClone);
+        if (randomId > 11) {
+                dealer_sum += 10;
+        } else if (dealer_sum == 0 && (randomId == 1 || randomId == 11)) {
+                dealer_sum += 11;
+        } else if (dealer_sum <= 10 && (randomId == 1 || randomId == 11)) {
+                dealer_sum += 11;
+        } else if (dealer_sum > 11 && (randomId == 1 || randomId == 11)) {
+                dealer_sum += 1;
+        } else {
+                dealer_sum += randomId;
+        }
+        dealer_checker();
+    }
+}    
+
 }
 
 //////////////////////////////////////////////////
@@ -200,6 +200,8 @@ function addCard() {
     } else {
         sum += randomId;
     }
+
+    
 
     sum_checker();
     dealerSide.style.minHeight = yourSide.clientHeight + "px";
