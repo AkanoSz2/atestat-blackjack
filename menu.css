@@ -41,7 +41,7 @@ body {
 }
 .table-3 {
   justify-content: space-around;
-  min-height: 160px;
+  min-height: 170px;
 }
 .your-side, .dealer-side, .actions-side, .bet-side {
     display: flex;
@@ -54,6 +54,11 @@ body {
   height: 100%;
   /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
   
+}
+.bet-side > h1 {
+  margin:7px;
+  color: #fff;
+  font-size: 1.3em;
 }
 
 .bet-list {
@@ -69,7 +74,6 @@ body {
   justify-content: space-around;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-
 }
 .button {
   --color1: #644dff;
@@ -95,7 +99,7 @@ body {
   filter: drop-shadow(0 15px 20px var(--color-3));
 }
 
-.remove {
+.remove,.guide {
   --color1: #990000;
   --color2: #660000;
   --color3: #99000063;
@@ -246,4 +250,8 @@ body {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  #more, #dealer-button {
+    display: none;
   }
