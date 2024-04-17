@@ -25,6 +25,7 @@ var playerBet = document.querySelector(".player-bet")
 var dealerBet = document.querySelector(".dealer-bet")
 var alterMessage = document.querySelector(".alert-context")
 var PunctBa = document.querySelector(".punct")
+var PunctBa = document.querySelector(".punct")
 
 // var noCredits = alterMessage.textContent = "No Credits";
 // var playerWin = alterMessage.textContent = "Player wins";
@@ -237,9 +238,17 @@ function sum_checker() {
         var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
         var newBalance = currentBalance - winningAmount;
         
+        
         playerBalance.textContent = newBalance.toLocaleString();
         var currentBalance = newBalance
         var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
+        var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
+        if(zeroBalance===1) PunctBa.textContent == "punct"
+        if(zeroBalance===0) {
+            value = "bye"
+            alerts(value)
+        }
+        // gameover();
         var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
         if(zeroBalance===1) PunctBa.textContent == "punct"
         if(zeroBalance===0) {
@@ -277,6 +286,7 @@ function dealer_checker() {
         playerBalance.textContent = newBalance.toLocaleString();
         dealerBalance.textContent = newDealerBalance.toLocaleString();
         console.log(currentBalance," ", winningAmount," ", newBalance) 
+        console.log(currentBalance," ", winningAmount," ", newBalance) 
         value = "player"
         alerts(value)
     } 
@@ -285,7 +295,16 @@ function dealer_checker() {
         var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
         var newBalance = currentBalance - winningAmount;
         
+        
         playerBalance.textContent = newBalance.toLocaleString();
+        console.log(currentBalance," ", winningAmount," ", newBalance) 
+        var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
+        if(zeroBalance===1) PunctBa.textContent == "punct"
+        if(zeroBalance===0) {
+            value = "bye"
+            alerts(value)
+        }
+        // gameover();
         console.log(currentBalance," ", winningAmount," ", newBalance) 
         var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
         if(zeroBalance===1) PunctBa.textContent == "punct"
@@ -304,7 +323,16 @@ function dealer_checker() {
             var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
             var newBalance = currentBalance - winningAmount;
             
+            
             playerBalance.textContent = newBalance.toLocaleString();
+            console.log(currentBalance," ", winningAmount," ", newBalance) 
+            var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
+            if(zeroBalance===1) PunctBa.textContent == "punct"
+            if(zeroBalance===0) {
+                value = "bye"
+                alerts(value)
+            }
+            // gameover();
             console.log(currentBalance," ", winningAmount," ", newBalance) 
             var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
             if(zeroBalance===1) PunctBa.textContent == "punct"
@@ -318,6 +346,8 @@ function dealer_checker() {
             alerts(value)
         } 
         else if (sum > dealer_sum) {
+        } 
+        else if (sum > dealer_sum) {
             var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
             var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
             var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
@@ -326,8 +356,12 @@ function dealer_checker() {
             playerBalance.textContent = newBalance.toLocaleString();
             console.log(currentBalance," ", winningAmount," ", newBalance) 
             // dealerBalance.textContent = newDealerBalance.toLocaleString();
+            console.log(currentBalance," ", winningAmount," ", newBalance) 
+            // dealerBalance.textContent = newDealerBalance.toLocaleString();
             value = "player"
             alerts(value)
+        } 
+        else if (sum == dealer_sum) {
         } 
         else if (sum == dealer_sum) {
             value == "draw"
@@ -336,12 +370,15 @@ function dealer_checker() {
     }
 }
 
+
 function dealer_turn() {
     currentsession = 1
     var dealer_goal = dealer_rng[Math.floor(Math.random() * dealer_rng.length)];
     console.log("dealer drags", dealer_goal)
     console.log("dealer Sum: ", dealer_sum)
     current_dealer_cards = 2
+
+    while (dealer_sum < 17) {
 
     while (dealer_sum < 17) {
         var DealerClone = cardLayout.cloneNode(true);
@@ -368,6 +405,7 @@ function dealer_turn() {
             yourSide.style.minHeight = dealerSide.clientHeight + "px";
         }
     }
+    if(current_dealer_cards===2)  dealer_checker()
     if(current_dealer_cards===2)  dealer_checker()
     console.log("dealer_sum:", dealer_sum)
 
@@ -438,10 +476,17 @@ function alerts(value) {
     }
     else if(value=="nocredits") {
         messagesHeader.textContent = "Nu ai suficiente puncte";
+        messagesHeader.textContent = "Nu ai suficiente puncte";
         messagesImage.classList.add("no-credits");
         messages.style.display = "flex";
     }
     else if(value=="broke") {
+        messagesHeader.textContent = "Nu ai suficiente puncte";
+        messagesImage.classList.add("no-credits");
+        messages.style.display = "flex";
+    }
+    else if(value=="bye") {
+        messagesHeader.textContent = "Revino mai tarziu, nu mai ai puncte";
         messagesHeader.textContent = "Nu ai suficiente puncte";
         messagesImage.classList.add("no-credits");
         messages.style.display = "flex";

@@ -96,6 +96,7 @@ body {
   box-shadow: 0 8px 0 var(--color2);
   transform: skew(-10deg);
   transition: all .1s ease;
+  filter: drop-shadow(0 15px 20px var(--color-3));
 }
 
 .remove,.guide {
