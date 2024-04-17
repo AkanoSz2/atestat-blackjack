@@ -159,6 +159,7 @@ function shuffle(){
 
 function generateRandomId(random_color) {
     var randomIndex;
+    if(available_clubs.length == 0 && available_diamond.length==0 && available_hearts.length==0 && available_spades==0) window.close();
     if (random_color === "spades") {
         if(available_spades.length === 0) {
             available_spades.splice(available_spades.indexOf('spades'), 1)
