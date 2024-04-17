@@ -1,4 +1,4 @@
-// TOTAL HOURS WASTED HERE = 24
+// TOTAL HOURS WASTED HERE = 26
 
 //////////////////////////////////////////////////
 ///                                            ///
@@ -36,11 +36,11 @@ var playerBalance = document.querySelector(".player-balance")
 var dealerBalance = document.querySelector(".dealer-balance")
 var over = document.querySelector(".over")
 
-const available_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const available_spades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const available_hearts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const available_diamond = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const available_clubs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+const available_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14];
+const available_spades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14];
+const available_hearts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14];
+const available_diamond = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14];
+const available_clubs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14];
 const card_colors = ["hearts", "diamonds", "clubs", "spades"];
 
 
@@ -76,6 +76,7 @@ let sum = 0
 let dealer_sum = 0
 let playerBetValue = 0
 let DealerBetValue = 0
+
 
 //////////////////////////////////////////////////
 ///                                            ///
@@ -159,31 +160,51 @@ function shuffle(){
 function generateRandomId(random_color) {
     var randomIndex;
     if (random_color === "spades") {
-        randomIndex = Math.floor(Math.random() * available_spades.length);
-        if (available_spades.length === 1) {
+        if(available_spades.length === 0) {
+            available_spades.splice(available_spades.indexOf('spades'), 1)
+            var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+            return generateRandomId(random_color);
+        }
+        else if (available_spades.length === 1) {
             return available_spades.pop();
         } else {
+            randomIndex = Math.floor(Math.random() * available_spades.length);
             return available_spades.splice(randomIndex, 1)[0];
         }
     } else if (random_color === "clubs") {
-        randomIndex = Math.floor(Math.random() * available_clubs.length);
-        if (available_clubs.length === 1) {
+        if(available_clubs.length === 0) {
+            available_clubs.splice(available_clubs.indexOf('clubs'), 1)
+            var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+            return generateRandomId(random_color);
+        }
+        else if (available_clubs.length === 1) {
             return available_clubs.pop();
         } else {
+            randomIndex = Math.floor(Math.random() * available_clubs.length);
             return available_clubs.splice(randomIndex, 1)[0];
         }
     } else if (random_color === "diamonds") {
-        randomIndex = Math.floor(Math.random() * available_diamond.length);
-        if (available_diamond.length === 1) {
+        if(available_diamond.length === 0) {
+            available_diamond.splice(available_diamond.indexOf('diamond'), 1)
+            var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+            return generateRandomId(random_color);
+        }
+        else if (available_diamond.length === 1) {
             return available_diamond.pop();
         } else {
+            randomIndex = Math.floor(Math.random() * available_diamond.length);
             return available_diamond.splice(randomIndex, 1)[0];
         }
     } else if (random_color === "hearts") {
-        randomIndex = Math.floor(Math.random() * available_hearts.length);
-        if (available_hearts.length === 1) {
+        if(available_hearts.length === 0) {
+            available_hearts.splice(available_hearts.indexOf('hearavailable_hearts'), 1)
+            var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
+            return generateRandomId(random_color);
+        }
+        else if (available_hearts.length === 1) {
             return available_hearts.pop();
         } else {
+            randomIndex = Math.floor(Math.random() * available_hearts.length);
             return available_hearts.splice(randomIndex, 1)[0];
         }
     }
@@ -221,6 +242,9 @@ function addCard() {
 function sum_checker() {
     playerScore.textContent = sum;
     // console.log("Player's Sum:", sum)
+    if (isNaN(sum)) {
+        window.close();
+    }
     if(sum == 21 ) {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
         var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
@@ -230,7 +254,6 @@ function sum_checker() {
         playerBalance.textContent = newBalance.toLocaleString();
         dealerBalance.textContent = newDealerBalance.toLocaleString();
         var value = "player"
-        alerts(value)
     }
     else if ((sum > 21)) {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
@@ -244,17 +267,16 @@ function sum_checker() {
         if(zeroBalance===1) PunctBa.textContent == "punct"
         if(zeroBalance===0) {
             value = "bye"
-            alerts(value)
         }
         // gameover();
         // over.style.display = "flex";
         var value = "dealer"
-        alerts(value)
     } 
     else if(sum==dealer_sum) {
         value=="draw"
-        alerts(value)
     }
+
+    alerts(value)
 }
 
 
@@ -266,7 +288,6 @@ function sum_checker() {
 
 function dealer_checker() {
     // console.log("Dealer's Sum:", dealer_sum)
-
     dealerScore.textContent = dealer_sum;
     if (dealer_sum > 21) {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
@@ -278,7 +299,6 @@ function dealer_checker() {
         dealerBalance.textContent = newDealerBalance.toLocaleString();
         console.log(currentBalance,"+", winningAmount,"=", newBalance) 
         value = "player"
-        alerts(value)
     } 
     else if (dealer_sum == 21) {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
@@ -291,13 +311,15 @@ function dealer_checker() {
         if(zeroBalance===1) PunctBa.textContent == "punct"
         if(zeroBalance===0) {
             value = "bye"
-            alerts(value)
+
         }
         // gameover();
         // over.style.display = "flex";
         var value = "dealer"
-        alerts(value)
     } 
+    else if (sum === dealer_sum) {
+        value = "draw"
+    }
     else if ((dealer_sum < 21) && currentsession == 1) {
         if (sum < dealer_sum) {
             var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
@@ -310,12 +332,12 @@ function dealer_checker() {
             if(zeroBalance===1) PunctBa.textContent == "punct"
             if(zeroBalance===0) {
                 value = "bye"
-                alerts(value)
+    
             }
             // gameover();
             // over.style.display = "flex";
             var value = "dealer"
-            alerts(value)
+
         } 
         else if (sum > dealer_sum) {
             var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
@@ -327,13 +349,14 @@ function dealer_checker() {
             console.log(currentBalance,"-", winningAmount,"=", newBalance) 
             // dealerBalance.textContent = newDealerBalance.toLocaleString();
             value = "player"
-            alerts(value)
+
         } 
         else if (sum == dealer_sum) {
             value == "draw"
-            alerts(value)
+
         }
     }
+    alerts(value)
 }
 
 function dealer_turn() {
@@ -369,7 +392,7 @@ function dealer_turn() {
         }
     }
     if(current_dealer_cards===2)  dealer_checker()
-    console.log("dealer_sum:", dealer_sum)
+    // console.log("dealer_sum:", dealer_sum)
 
 }
 
@@ -382,6 +405,9 @@ function dealer_turn() {
 
 
 function reset_game() {
+    kmsatp = parseInt(dealerBalance.textContent.replace(",", ""));
+    if(kmsatp<=0) alerts("pa")
+    
     console.log("-----------------------------")
     while (yourSide.firstChild) {
         yourSide.removeChild(yourSide.firstChild);
@@ -419,6 +445,7 @@ function reset_game() {
     guide.style.display = "flex";
 }
 
+var value
 function alerts(value) {
     if(value=="player") {
         messages.style.display = "flex";
@@ -451,6 +478,7 @@ function alerts(value) {
         messagesImage.classList.add("no-credits");
         messages.style.display = "flex";
     }
+    else if (value=="pa") window.close();
 }
 //////////////////////////////////////////////////
 ///                                            ///
