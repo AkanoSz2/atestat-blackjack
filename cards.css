@@ -75,6 +75,7 @@
     background-image: url('poker/ace_of_clubs.png');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* Diamonds */
