@@ -1,4 +1,4 @@
-// TOTAL HOURS WASTED HERE = 22
+// TOTAL HOURS WASTED HERE = 24
 
 //////////////////////////////////////////////////
 ///                                            ///
@@ -16,7 +16,7 @@ var bodyElement = document.body;
 
 var messages = document.querySelector(".alertos")
 var messagesHeader = document.querySelector(".alert-context")
-var messagesImage = document.querySelector(".alert-icon")
+var messagesImage = document.getElementById("alert-icon")
 
 
 var playerScore = document.querySelector(".player-score")
@@ -24,6 +24,7 @@ var dealerScore = document.querySelector(".dealer-score")
 var playerBet = document.querySelector(".player-bet")
 var dealerBet = document.querySelector(".dealer-bet")
 var alterMessage = document.querySelector(".alert-context")
+var PunctBa = document.querySelector(".punct")
 
 // var noCredits = alterMessage.textContent = "No Credits";
 // var playerWin = alterMessage.textContent = "Player wins";
@@ -63,6 +64,7 @@ const dealer_rng = [2, 3, 4];
 var currentsession = 0
 var dealer_goal = 0
 var roundSTARTED = 0
+current_ace_rate = 0
 
 var yourSide = document.querySelector(".your-side");
 var dealerSide = document.querySelector(".dealer-side");
@@ -234,10 +236,17 @@ function sum_checker() {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
         var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
         var newBalance = currentBalance - winningAmount;
+        
         playerBalance.textContent = newBalance.toLocaleString();
         var currentBalance = newBalance
         var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
-        gameover();
+        var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
+        if(zeroBalance===1) PunctBa.textContent == "punct"
+        if(zeroBalance===0) {
+            value = "bye"
+            alerts(value)
+        }
+        // gameover();
         // over.style.display = "flex";
         var value = "dealer"
         alerts(value)
@@ -267,6 +276,7 @@ function dealer_checker() {
         var newDealerBalance = currentDealerBalance - winningAmount;
         playerBalance.textContent = newBalance.toLocaleString();
         dealerBalance.textContent = newDealerBalance.toLocaleString();
+        console.log(currentBalance," ", winningAmount," ", newBalance) 
         value = "player"
         alerts(value)
     } 
@@ -274,8 +284,16 @@ function dealer_checker() {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
         var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
         var newBalance = currentBalance - winningAmount;
+        
         playerBalance.textContent = newBalance.toLocaleString();
-        gameover();
+        console.log(currentBalance," ", winningAmount," ", newBalance) 
+        var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
+        if(zeroBalance===1) PunctBa.textContent == "punct"
+        if(zeroBalance===0) {
+            value = "bye"
+            alerts(value)
+        }
+        // gameover();
         // over.style.display = "flex";
         var value = "dealer"
         alerts(value)
@@ -285,34 +303,47 @@ function dealer_checker() {
             var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
             var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
             var newBalance = currentBalance - winningAmount;
+            
             playerBalance.textContent = newBalance.toLocaleString();
-            gameover();
+            console.log(currentBalance," ", winningAmount," ", newBalance) 
+            var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
+            if(zeroBalance===1) PunctBa.textContent == "punct"
+            if(zeroBalance===0) {
+                value = "bye"
+                alerts(value)
+            }
+            // gameover();
             // over.style.display = "flex";
             var value = "dealer"
             alerts(value)
-        } else if (sum > dealer_sum) {
+        } 
+        else if (sum > dealer_sum) {
             var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
             var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
             var winningAmount = parseInt(dealerBet.textContent.replace(",", ""));
             var newBalance = currentBalance + winningAmount;
             var newDealerBalance = currentDealerBalance - winningAmount;
             playerBalance.textContent = newBalance.toLocaleString();
-            dealerBalance.textContent = newDealerBalance.toLocaleString();
+            console.log(currentBalance," ", winningAmount," ", newBalance) 
+            // dealerBalance.textContent = newDealerBalance.toLocaleString();
             value = "player"
             alerts(value)
-        } else if (sum == dealer_sum) {
+        } 
+        else if (sum == dealer_sum) {
             value == "draw"
             alerts(value)
         }
     }
 }
+
 function dealer_turn() {
     currentsession = 1
     var dealer_goal = dealer_rng[Math.floor(Math.random() * dealer_rng.length)];
     console.log("dealer drags", dealer_goal)
     console.log("dealer Sum: ", dealer_sum)
     current_dealer_cards = 2
-    while (dealer_sum <17) {
+
+    while (dealer_sum < 17) {
         var DealerClone = cardLayout.cloneNode(true);
         var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
         var randomId = generateRandomId(random_color); // Pass random_color to generateRandomId()
@@ -337,7 +368,7 @@ function dealer_turn() {
             yourSide.style.minHeight = dealerSide.clientHeight + "px";
         }
     }
-    dealer_checker()
+    if(current_dealer_cards===2)  dealer_checker()
     console.log("dealer_sum:", dealer_sum)
 
 }
@@ -349,9 +380,6 @@ function dealer_turn() {
 ///                                            ///
 //////////////////////////////////////////////////
 
-function gameover() {
-
-}
 
 function reset_game() {
     console.log("-----------------------------")
@@ -371,32 +399,16 @@ function reset_game() {
     playerBetValue = 0
     DealerBetValue = 0
     currentsession = 0
+    roundSTARTED = 0;
+
     playerBet.textContent = 0;
     dealerBet.textContent = 0;
+
     playerScore.textContent = sum;
     dealerScore.textContent = sum;
-    // for (var i = 0; i < 2; i++) {
-    //     var PlayerClone = cardLayout.cloneNode(true);
-    //     var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
-    //     var randomId = generateRandomId(random_color);
-    //     PlayerClone.id = randomId;
-    //     PlayerClone.classList.add("" + random_color + "-" + randomId);
-    //     available_numbers.splice(available_numbers.indexOf(randomId), 1);
-    //     yourSide.appendChild(PlayerClone);
-    //     sum += randomId;
-    //     sum_checker();
-    // }
-    // for (var i = 0; i < 2; i++) {
-    //     var DealerClone = cardLayout.cloneNode(true);
-    //     var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
-    //     var randomId = generateRandomId(random_color);
-    //     DealerClone.id = randomId;
-    //     DealerClone.classList.add("" + random_color + "-" + randomId);
-    //     available_numbers.splice(available_numbers.indexOf(randomId), 1);
-    //     dealerSide.appendChild(DealerClone);
-    //     dealer_sum += randomId;
-    //     dealer_checker();
-    // }
+
+    messagesImage.removeAttribute("class");
+
     messages.style.display = "none";
     yourSide.style.boxShadow = "none";
     dealerSide.style.boxShadow = "none";
@@ -405,7 +417,6 @@ function reset_game() {
     dealerSam.style.display = "none";
     start.style.display = "flex";
     guide.style.display = "flex";
-    roundSTARTED =0;
 }
 
 function alerts(value) {
@@ -426,12 +437,17 @@ function alerts(value) {
         messages.style.display = "flex";
     }
     else if(value=="nocredits") {
-        messagesHeader.textContent = "Insuficiente credite";
+        messagesHeader.textContent = "Nu ai suficiente puncte";
         messagesImage.classList.add("no-credits");
         messages.style.display = "flex";
     }
     else if(value=="broke") {
-        messagesHeader.textContent = "Nu poti paria cu aer, coaie";
+        messagesHeader.textContent = "Nu ai suficiente puncte";
+        messagesImage.classList.add("no-credits");
+        messages.style.display = "flex";
+    }
+    else if(value=="bye") {
+        messagesHeader.textContent = "Revino mai tarziu, nu mai ai puncte";
         messagesImage.classList.add("no-credits");
         messages.style.display = "flex";
     }
@@ -448,10 +464,12 @@ function addToBet(amount) {
         if (playerBetValue > currentBalance) {
             playerBetValue = currentBalance;
             playerBet.textContent = playerBetValue;
+            dealerBet.textContent = playerBetValue;
+            console.log(playerBet.textContent, "=", dealerBet.textContent)
         } else {
             playerBet.textContent = playerBetValue;
             dealerBet.textContent = playerBetValue;
-            DealerBetValue = playerBetValue;
+            console.log(playerBet.textContent, "=", dealerBet.textContent)
         }
     } else {
         console.log("No");
@@ -472,20 +490,31 @@ betButtons.bet100.addEventListener('click', handleBetButtonClick(100));
 betButtons.bet200.addEventListener('click', handleBetButtonClick(200));
 
 // Function to subtract the specified amount from playerBet
+// Function to subtract the specified amount from playerBet
 function removeFromBet(amount) {
-    if(roundSTARTED == 0) {
-    playerBetValue -= amount;
-    if (playerBetValue < 0) {
-        playerBetValue = 0;
+    var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
+    if (roundSTARTED == 0) {
+        if (playerBetValue >= amount) { // Check if there's enough balance to remove
+            playerBetValue -= amount;
+            if (playerBet <= 0) {
+                playerBetValue = 0;
+                playerBet.textContent = 0;
+                dealerBet.textContent = 0;
+                console.log(playerBet.textContent, "=", dealerBet.textContent)
+            } else {
+                playerBet.textContent = playerBetValue;
+                dealerBet.textContent = playerBetValue;
+                console.log(playerBet.textContent, "=", dealerBet.textContent)
+            }
+        } else {
+            playerBetValue = 0;
+            playerBet.textContent = 0;
+            dealerBet.textContent = 0;
+        }
+    } else {
+        console.log("No");
     }
-    playerBet.textContent = playerBetValue
-    dealerBet.textContent = playerBetValue
-    DealerBetValue = playerBetValue
-    // console.log("Player Bet:", playerBetValue);
 }
-else console.log("nah")
-}
-
 // Function to handle click on each un-bet button
 function handleUnBetButtonClick(amount) {
     return function() {
@@ -509,7 +538,7 @@ unBetButtons.unBet200.addEventListener('click', handleUnBetButtonClick(200));
 more.addEventListener("click", addCard);
 start.addEventListener("click", shuffle);
 restart.addEventListener("click", reset_game)
-dealerSam.addEventListener("click", dealer_turn)
-// reset.addEventListener("click", function() {
-//     reset_game();
-// });
+// dealerSam.addEventListener("click", dealer_turn)
+dealerSam.addEventListener("click", function() {
+    dealer_turn();
+});
