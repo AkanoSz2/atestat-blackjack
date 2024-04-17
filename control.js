@@ -220,7 +220,7 @@ function addCard() {
 }
 function sum_checker() {
     playerScore.textContent = sum;
-    console.log("Player's Sum:", sum)
+    // console.log("Player's Sum:", sum)
     if(sum == 21 ) {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
         var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
@@ -265,7 +265,7 @@ function sum_checker() {
 //////////////////////////////////////////////////
 
 function dealer_checker() {
-    console.log("Dealer's Sum:", dealer_sum)
+    // console.log("Dealer's Sum:", dealer_sum)
 
     dealerScore.textContent = dealer_sum;
     if (dealer_sum > 21) {
@@ -276,7 +276,7 @@ function dealer_checker() {
         var newDealerBalance = currentDealerBalance - winningAmount;
         playerBalance.textContent = newBalance.toLocaleString();
         dealerBalance.textContent = newDealerBalance.toLocaleString();
-        console.log(currentBalance," ", winningAmount," ", newBalance) 
+        console.log(currentBalance,"+", winningAmount,"=", newBalance) 
         value = "player"
         alerts(value)
     } 
@@ -286,7 +286,7 @@ function dealer_checker() {
         var newBalance = currentBalance - winningAmount;
         
         playerBalance.textContent = newBalance.toLocaleString();
-        console.log(currentBalance," ", winningAmount," ", newBalance) 
+        console.log(currentBalance,"-", winningAmount,"=", newBalance) 
         var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
         if(zeroBalance===1) PunctBa.textContent == "punct"
         if(zeroBalance===0) {
@@ -305,7 +305,7 @@ function dealer_checker() {
             var newBalance = currentBalance - winningAmount;
             
             playerBalance.textContent = newBalance.toLocaleString();
-            console.log(currentBalance," ", winningAmount," ", newBalance) 
+            console.log(currentBalance,"-", winningAmount,"=", newBalance) 
             var zeroBalance = parseInt(playerBalance.textContent.replace(",", ""));
             if(zeroBalance===1) PunctBa.textContent == "punct"
             if(zeroBalance===0) {
@@ -324,7 +324,7 @@ function dealer_checker() {
             var newBalance = currentBalance + winningAmount;
             var newDealerBalance = currentDealerBalance - winningAmount;
             playerBalance.textContent = newBalance.toLocaleString();
-            console.log(currentBalance," ", winningAmount," ", newBalance) 
+            console.log(currentBalance,"-", winningAmount,"=", newBalance) 
             // dealerBalance.textContent = newDealerBalance.toLocaleString();
             value = "player"
             alerts(value)
