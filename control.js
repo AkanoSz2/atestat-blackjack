@@ -1,4 +1,4 @@
-// TOTAL HOURS WASTED HERE = 26
+// TOTAL HOURS WASTED HERE = 27
 
 //////////////////////////////////////////////////
 ///                                            ///
@@ -120,8 +120,8 @@ function shuffle(){
         } else {
             sum += randomId;
         }
-        sum_checker();
     }
+    sum_checker();
     for (var i = 0; i < 2; i++) {
         var DealerClone = cardLayout.cloneNode(true);
         var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
@@ -140,8 +140,9 @@ function shuffle(){
         } else {
                 dealer_sum += randomId;
         }
-        dealer_checker();
     }
+    dealer_checker();
+
     more.style.display = "flex";
     dealerSam.style.display = "flex";
     start.style.display = "none";
@@ -244,7 +245,7 @@ function sum_checker() {
     playerScore.textContent = sum;
     
     console.log("D/P", dealer_sum, "=", sum)
-    if(IdiotuApasa>=3) more.disabled = true
+    if((IdiotuApasa>=5) || (sum>=21)) more.disabled = true
 
     if (isNaN(sum)) {
         window.close();
@@ -293,7 +294,9 @@ function sum_checker() {
 function dealer_checker() {
     dealerScore.textContent = dealer_sum;
     console.log("D/P", dealer_sum, "=", sum)
-    if(IdiotuApasa>=1) alert("ba")
+    if(IdiotuApasa>=1) {
+        dealerSam.disabled = true
+    }
     if (dealer_sum > 21) {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
         var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
@@ -354,7 +357,6 @@ function dealer_checker() {
             console.log(currentBalance,"-", winningAmount,"=", newBalance) 
             // dealerBalance.textContent = newDealerBalance.toLocaleString();
             value = "player"
-
         } 
         else if (sum == dealer_sum) {
             value == "draw"
@@ -454,6 +456,8 @@ function reset_game() {
     guide.style.display = "flex";
 
     more.disabled = false
+    dealerSam.disabled = false
+
 }
 
 var value
@@ -578,5 +582,6 @@ start.addEventListener("click", shuffle);
 restart.addEventListener("click", reset_game)
 // dealerSam.addEventListener("click", dealer_turn)
 dealerSam.addEventListener("click", function() {
+    IdiotuApasa = 0
     dealer_turn();
 });
