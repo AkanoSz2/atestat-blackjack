@@ -77,6 +77,8 @@ let dealer_sum = 0
 let playerBetValue = 0
 let DealerBetValue = 0
 
+var IdiotuApasa = 0
+
 
 //////////////////////////////////////////////////
 ///                                            ///
@@ -159,7 +161,7 @@ function shuffle(){
 
 function generateRandomId(random_color) {
     var randomIndex;
-    if(available_clubs.length == 0 && available_diamond.length==0 && available_hearts.length==0 && available_spades==0) window.close();
+    if(available_clubs.length == 0 && available_diamond.length==0 && available_hearts.length==0 && available_spades.length==0) window.close();
     if (random_color === "spades") {
         if(available_spades.length === 0) {
             available_spades.splice(available_spades.indexOf('spades'), 1)
@@ -214,6 +216,7 @@ function generateRandomId(random_color) {
 }
 
 function addCard() {
+    IdiotuApasa++
     var PlayerClone = cardLayout.cloneNode(true);
     var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
     var randomId = generateRandomId(random_color); // Pass random_color to generateRandomId()
@@ -232,9 +235,6 @@ function addCard() {
     } else {
         sum += randomId;
     }
-
-    
-
     sum_checker();
     if (yourSide.style.minHeight > dealerSide.style.minHeight) {
         dealerSide.style.minHeight = yourSide.clientHeight + "px";
@@ -242,7 +242,10 @@ function addCard() {
 }
 function sum_checker() {
     playerScore.textContent = sum;
-    // console.log("Player's Sum:", sum)
+    
+    console.log("D/P", dealer_sum, "=", sum)
+    if(IdiotuApasa>=3) more.disabled = true
+
     if (isNaN(sum)) {
         window.close();
     }
@@ -288,8 +291,9 @@ function sum_checker() {
 //////////////////////////////////////////////////
 
 function dealer_checker() {
-    // console.log("Dealer's Sum:", dealer_sum)
     dealerScore.textContent = dealer_sum;
+    console.log("D/P", dealer_sum, "=", sum)
+    if(IdiotuApasa>=1) alert("ba")
     if (dealer_sum > 21) {
         var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
         var currentDealerBalance = parseInt(dealerBalance.textContent.replace(",", ""));
@@ -361,13 +365,13 @@ function dealer_checker() {
 }
 
 function dealer_turn() {
+    more.disabled = true
     currentsession = 1
     var dealer_goal = dealer_rng[Math.floor(Math.random() * dealer_rng.length)];
-    console.log("dealer drags", dealer_goal)
-    console.log("dealer Sum: ", dealer_sum)
     current_dealer_cards = 2
 
     while (dealer_sum < 17) {
+        IdiotuApasa++
         var DealerClone = cardLayout.cloneNode(true);
         var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
         var randomId = generateRandomId(random_color); // Pass random_color to generateRandomId()
@@ -392,7 +396,10 @@ function dealer_turn() {
             yourSide.style.minHeight = dealerSide.clientHeight + "px";
         }
     }
-    if(current_dealer_cards===2)  dealer_checker()
+    if(current_dealer_cards===2){
+        IdiotuApasa++
+        dealer_checker()
+    }  
     // console.log("dealer_sum:", dealer_sum)
 
 }
@@ -427,6 +434,7 @@ function reset_game() {
     DealerBetValue = 0
     currentsession = 0
     roundSTARTED = 0;
+    IdiotuApasa = 0
 
     playerBet.textContent = 0;
     dealerBet.textContent = 0;
@@ -444,6 +452,8 @@ function reset_game() {
     dealerSam.style.display = "none";
     start.style.display = "flex";
     guide.style.display = "flex";
+
+    more.disabled = false
 }
 
 var value
@@ -457,7 +467,6 @@ function alerts(value) {
         messagesImage.classList.add("dealer-win");
         messages.style.display = "flex";
         messagesHeader.textContent = "Dealer-ul castiga";
-
     }
     else if(value=="draw"){
         messagesImage.classList.add("draw");
