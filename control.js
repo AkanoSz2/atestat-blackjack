@@ -245,7 +245,7 @@ function sum_checker() {
     playerScore.textContent = sum;
     
     console.log("D/P", dealer_sum, "=", sum)
-    if((IdiotuApasa>=3) || (sum>=21)) more.disabled = true
+    if((IdiotuApasa>=5) || (sum>=21)) more.disabled = true
 
     if (isNaN(sum)) {
         window.close();
