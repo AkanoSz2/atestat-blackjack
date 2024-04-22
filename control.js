@@ -319,11 +319,10 @@ function dealer_checker() {
         if(zeroBalance===1) PunctBa.textContent == "punct"
         if(zeroBalance===0) {
             value = "bye"
-
         }
+        else var value = "dealer"
         // gameover();
         // over.style.display = "flex";
-        var value = "dealer"
     } 
     else if (sum === dealer_sum) {
         value = "draw"
@@ -431,12 +430,12 @@ function reset_game() {
     over.style.display = "none";
     bodyElement.style.overflow = "auto"
     sum = 0;
-    dealer_sum = 0
+    dealer_sum = 0;
     playerBetValue = 0
     DealerBetValue = 0
     currentsession = 0
     roundSTARTED = 0;
-    IdiotuApasa = 0
+    IdiotuApasa = 0;
 
     playerBet.textContent = 0;
     dealerBet.textContent = 0;
