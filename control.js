@@ -1,4 +1,5 @@
-// TOTAL HOURS WASTED HERE = 26
+// TOTAL HOURS WASTED HERE = 29
+// DEBUGGING = 16
 
 //////////////////////////////////////////////////
 ///                                            ///
