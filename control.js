@@ -77,7 +77,7 @@ let dealer_sum = 0
 let playerBetValue = 0
 let DealerBetValue = 0
 
-var IdiotuApasa = 0
+var InputUser = 0
 
 
 //////////////////////////////////////////////////
@@ -149,9 +149,6 @@ function shuffle(){
     guide.style.display = "none";
     roundSTARTED = 1
 }   
-
-
-
 }
 
 //////////////////////////////////////////////////
@@ -162,7 +159,7 @@ function shuffle(){
 
 function generateRandomId(random_color) {
     var randomIndex;
-    if(available_clubs.length == 0 && available_diamond.length==0 && available_hearts.length==0 && available_spades.length==0) window.close();
+    if(available_clubs.length <= 2 && available_diamond.length <= 2 && available_hearts.length <= 2 && available_spades.length <= 2 ) location.reload();
     if (random_color === "spades") {
         if(available_spades.length === 0) {
             available_spades.splice(available_spades.indexOf('spades'), 1)
@@ -217,7 +214,7 @@ function generateRandomId(random_color) {
 }
 
 function addCard() {
-    IdiotuApasa++
+    InputUser++
     var PlayerClone = cardLayout.cloneNode(true);
     var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
     var randomId = generateRandomId(random_color); // Pass random_color to generateRandomId()
@@ -241,11 +238,12 @@ function addCard() {
         dealerSide.style.minHeight = yourSide.clientHeight + "px";
     }
 }
+
 function sum_checker() {
     playerScore.textContent = sum;
     
     console.log("D/P", dealer_sum, "=", sum)
-    if((IdiotuApasa>=5) || (sum>=21)) more.disabled = true
+    if((InputUser>=5) || (sum>=21)) more.disabled = true
 
     if (isNaN(sum)) {
         window.close();
@@ -294,7 +292,7 @@ function sum_checker() {
 function dealer_checker() {
     dealerScore.textContent = dealer_sum;
     console.log("D/P", dealer_sum, "=", sum)
-    if(IdiotuApasa>=1) {
+    if(InputUser>=1) {
         dealerSam.disabled = true
     }
     if (dealer_sum > 21) {
@@ -373,7 +371,7 @@ function dealer_turn() {
     current_dealer_cards = 2
 
     while (dealer_sum < 17) {
-        IdiotuApasa++
+        InputUser++
         var DealerClone = cardLayout.cloneNode(true);
         var random_color = card_colors[Math.floor(Math.random() * card_colors.length)];
         var randomId = generateRandomId(random_color); // Pass random_color to generateRandomId()
@@ -399,7 +397,7 @@ function dealer_turn() {
         }
     }
     if(current_dealer_cards===2){
-        IdiotuApasa++
+        InputUser++
         dealer_checker()
     }  
     // console.log("dealer_sum:", dealer_sum)
@@ -436,7 +434,7 @@ function reset_game() {
     DealerBetValue = 0
     currentsession = 0
     roundSTARTED = 0;
-    IdiotuApasa = 0
+    InputUser = 0
 
     playerBet.textContent = 0;
     dealerBet.textContent = 0;
@@ -499,6 +497,7 @@ function alerts(value) {
 ///               BETTING BOYSSS               ///
 ///                                            ///
 //////////////////////////////////////////////////
+
 function addToBet(amount) {
     var currentBalance = parseInt(playerBalance.textContent.replace(",", ""));
     if (roundSTARTED == 0) {
@@ -582,6 +581,6 @@ start.addEventListener("click", shuffle);
 restart.addEventListener("click", reset_game)
 // dealerSam.addEventListener("click", dealer_turn)
 dealerSam.addEventListener("click", function() {
-    IdiotuApasa = 0
+    InputUser = 0
     dealer_turn();
 });
